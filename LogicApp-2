@@ -16,7 +16,10 @@ connectors or creating their own unique connectors. Connectors can also be defin
 Connectors in Azure Logic Apps can function as either actions or triggers.
 Q: What are Actions in Azure Logic Apps?
 Ans:
-Actions are the steps that are performed once the trigger is activated. When an Azure Logic App is started, a series of actions are performed to complete the workflow. Actions are processes that will carry out the specified business task based on the data supplied by the user. Users can choose the required action from the connector repository's collection of actions.
+Actions are the steps that are performed once the trigger is activated. When an Azure Logic App is started, 
+a series of actions are performed to complete the workflow. Actions are processes that will carry out the 
+specified business task based on the data supplied by the user. Users can choose the required action from 
+the connector repository's collection of actions.
 Take a look at our suggested post :
 Azure Active Directory Interview Questions
 Azure Cosmos DB Interview Questions
@@ -49,7 +52,8 @@ There are two main types of triggers:
 Built-in triggers are predefined triggers that activate Azure Logic Apps according to a schedule and the HTTP protocol.
 Many built-in trigger types are available, including HTTP, HTTPWebhook, Recurrence, and Request.
 2.	Managed API triggers
-Managed API triggers are built on API connections and API Webhook connections that use custom connectors to check an endpoint.
+Managed API triggers are built on API connections and API Webhook connections that use custom connectors to check 
+an endpoint.
 Q: Which type of trigger has to be used to start the azure logic app?
 Ans:
 An Azure alert notification can be routed to other systems via webhooks for specific processing or actions. 
