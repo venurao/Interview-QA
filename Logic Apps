@@ -1,0 +1,53 @@
+1. What is used for development of Logic app?
+-  Logic app development can be done online by using Azure portal and offline by using visual studio by adding the required supporting sdk.
+
+2. What is difference between Logic App and Power Automate(Microsoft flow)?
+- Power Automate is targeted for Business users(for using that they need to get License) whereas Logic app is targeted for developers.
+  Power Automate is build on top of Logic Apps however it is meant to be truly a “no-code approach” to build automation and integration.
+  And it does not support any Enterprise connectors, no governance and no Integration with Azure DevOps for CI/CD deployment.
+
+3.How is logic app instantiated?
+-  Logic Apps gets instantiated(started) by a Trigger. 
+   Trigger types available are : 
+   Http
+   HttpWebhook
+   Request (endpoint)
+   Recurrence (schedule)
+   ApiConnection
+   ApiConnectionWebhook
+
+4.What are the mechanisms supported by Logic App Trigger?
+- Logic app trigger support following mechanisms
+   Schedule (Time based)
+   Push (Client application pushes the data to Logic App e.g, Http Trigger)
+   Pull  (Logic app probes the client application for data, if found it fetches the data e.g., Servicebus queue trigger)
+   Manual (Irrespective of trigger used, Logic app can be manually trigger with the help of Run )
+
+5.What is an Action in Logic App?
+- Each step in a logic app is an Action. It can be anything from control workflow actions (condition, foreach, switch, terminate etc), 
+  data manipulation actions (compose, filter array, .create csv table, join etc), 
+  integration account actions( xml validation, transformation, flat file decoding/encoding etc) etc.
+
+6.What is difference between Action and trigger?
+- Trigger is also an Action but a special action. It is the first action in the workflow which has the capability to instantiate the workflow. 
+  It may or may not contain data associated with it.
+
+7.Why Run After property not available with Trigger?
+- Run After property supports 4 status - Success, Failed, Skipped, Timeout. 
+  The successor(next action) relies on the status of the predecessor(previous action), so accordingly it decide what to do. 
+  However in case of Trigger there is only one status i.e. success . Only if trigger is success then next step in workflow comes into picture. 
+  Just think, if you fail at first step - there can't be next step. But yes, you can retry and that property is available with Trigger.
+
+8.Can we Clone a logic app from one resource group to another resource group?
+- No. This option is not there.
+  You can clone logic app only in same resource group and in same subscription.
+
+9. How is Logic App Charged?
+- Based on the deployment model chosen
+  ISE - Flat cost (Fixed)
+  Consumption - Per action execution is charged
+  Standard - Based on a hosting plan with a selected pricing tier.
+
+10. Can we have long running logic app?
+- It depends on the deployment plan you have chosen.
+For ISE maximum is 366 days, whereas 90 days for consumption and standard stateful and 5 mins for standard stateless.
