@@ -70,7 +70,8 @@ But suppose I want to test it without Enabling it, can I run the trigger manuall
   " The workflow is disabled. Please enable your workflow and try again."
 
 16.What will happen if I disable a Logic app after few of it's instance are started/triggered.
-- Once you disable the logic app,  trigger becomes inactive i.e. new instance won't be created. However the instance which have already started won't be impacted and it will continue to process.
+- Once you disable the logic app,  trigger becomes inactive i.e. new instance won't be created. However the instance 
+  which have already started won't be impacted and it will continue to process.
 
 17.How do we provide security on logic app?
 -  When talking about security of Logic app, there are various level which can be considered.
@@ -81,4 +82,49 @@ But suppose I want to test it without Enabling it, can I run the trigger manuall
   iv. Should the data that is going in and coming out of an action be hidden
   v. Should the access be restricted from the unknowns and allow only the trusted ones (ip address restriction)
 
-16. 
+18.I did some changes in existing logic app, but later it was not required. Can I rollback to previous version?
+  - Yes. It can be done. Here we use the version feature available in Logic app, select the version which you want and promote it.
+
+19. How does Logic App resolve Agreement?
+- Logic app requires the EDI messages having the qualifier and identifier fields for sender and receiver in order to perform agreement resolution. 
+  It will match the values of ISA5, ISA6, ISA7, and ISA8 in the interchange header with those in the properties of an agreement.
+
+20. Can we use api connection created in one logic app in other logic App?
+- Yes, it is possible. Api connection is in itself an resource and can be reused as needed.
+
+21.Is data persisted in Logic Apps?
+- Here the answer is Yes and No. Depending upon the chosen workflow type
+
+  Stateful workflow : Workflows save and transfer all the inputs and outputs for each action and their states to external storage.
+  
+  Stateless workflow: No external storage, everything in memory - no persistence of data.
+  
+  Above two are options available in Standard offering, whereas for rest it is Stateful (thus we can see history details)
+
+22.Can a serverless Logic app access resources which are on premises?
+- When we say serverless, it means we have created Logic app which runs in consumption plan.
+
+  As per this plan the servers are not fixed, it is added and removed as per the load/demand. Thus there is no fixed set of IP address.
+  
+  And because of this integration with network on premises is not possible directly.
+  
+  However, with the help of On-premise data gateway it can be made possible.
+
+23. Can we implement Try..Catch block in Logic App?
+- Yes. We can implement it with the help of Scope shape. First scope encompasses the steps/business process/logic 
+  and another scope encompasses the steps to take when exception occurs. 
+  And configure second  scope's run after property to run only when first scope fails or times out.
+
+24.What is difference between trigger() and triggerBody() ?
+- Both are related to the output of the trigger in the logic app.
+  trigger() is an Azure Workflow built-in FUNCTION, which refers the entire trigger object (including headers and body) and is shorthand of trigger().outputs
+  Whereas triggerBody() is shorthand for trigger().outputs.body thus it only points to body part of trigger output and it's type is String.
+
+25.Can we access output of an action or variable from Try scope in Catch scope(which executes on Try scope failure)?
+- Yes it can be accessed.
+  Provided that the action or variable which you are trying to access is successful in Try Scope.
+
+26.Can we have multiple workflows defined in a Single Logic app?
+- Yes and No.
+If you are going with Consumption plan then it is not possible as there is one to one mapping i.e. one workflow - one logic app.
+But if you are going with Standard plan then there is provision to have one to many mapping i.e., many workflow - one logic app. It is on the same line as Azure Function app having multiple functions in it.
