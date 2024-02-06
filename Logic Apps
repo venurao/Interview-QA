@@ -50,4 +50,35 @@
 
 10. Can we have long running logic app?
 - It depends on the deployment plan you have chosen.
-For ISE maximum is 366 days, whereas 90 days for consumption and standard stateful and 5 mins for standard stateless.
+  For ISE maximum is 366 days, whereas 90 days for consumption and standard stateful and 5 mins for standard stateless.
+
+11. Where is apiConnections used in Logic app stored?
+- Although ApiConnections are created and used in Logic app, they are an Azure resource. Thus like other resources, this too is stored in Resource Group.
+
+12.Can we instantiate a particular logic app with more than one trigger?
+- Yes, it is possible to have multiple triggers for single logic app. But this can be done only via code view, with designer view it is not supported yet.
+
+13.Can we have multi source map used in Logic app?
+- No. As of now it does not have that capability
+
+14.Is it possible to parameterize logic app?
+- Yes.
+
+15. A Time scheduled(recurrence) Logic app is in disabled state, so it will not get triggered as per schedule. 
+But suppose I want to test it without Enabling it, can I run the trigger manually?
+- Although the logic app is in disable state, you can manually run the trigger but it will notify you saying- 
+  " The workflow is disabled. Please enable your workflow and try again."
+
+16.What will happen if I disable a Logic app after few of it's instance are started/triggered.
+- Once you disable the logic app,  trigger becomes inactive i.e. new instance won't be created. However the instance which have already started won't be impacted and it will continue to process.
+
+17.How do we provide security on logic app?
+-  When talking about security of Logic app, there are various level which can be considered.
+  Like
+  i. Who can access the logic app (Read)
+  ii. Who can create and delete the logic app (Read and Delete)
+  iii. Who can access the Logic app history data (trigger and run)
+  iv. Should the data that is going in and coming out of an action be hidden
+  v. Should the access be restricted from the unknowns and allow only the trusted ones (ip address restriction)
+
+16. 
